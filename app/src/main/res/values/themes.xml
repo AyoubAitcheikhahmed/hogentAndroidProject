@@ -1,0 +1,60 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.HogentProject" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="fontFamily" >@font/roboto</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="ulteamButton">
+        <item name="cornerRadius">@dimen/margin_30dp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="ulteamButton_small">
+        <item name="cornerRadius">@dimen/margin_14dp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="input_box">
+        <item name="boxBackgroundColor">#272A30</item>
+        <item name="boxCornerRadiusTopStart">@dimen/card_corner_small</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/card_corner_small</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/card_corner_small</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/card_corner_small</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_10dp</item>
+        <item name="hintTextColor">@color/ulteamGreen</item>
+        <item name="android:textColorHint">@color/ulteamGreen</item>
+    </style>
+
+    <style name="etStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
+
+    <style name="tilStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">#272A30</item>
+        <item name="boxCornerRadiusTopStart">@dimen/card_corner_small</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/card_corner_small</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/card_corner_small</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/card_corner_small</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_10dp</item>
+        <item name="hintTextColor">@color/white</item>
+        <item name="materialThemeOverlay">@style/etStyle</item>
+</style>
+
+
+</resources>

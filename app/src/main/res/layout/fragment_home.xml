@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment_home"
+    android:background="@color/background">
+
+    <RelativeLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/top_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_parent">
+
+                <ImageView
+                    android:id="@+id/photo"
+                    android:layout_width="@dimen/photo_size"
+                    android:layout_height="@dimen/photo_size"
+                    android:src="@drawable/ic_person"/>
+
+                <LinearLayout
+                    android:layout_width="213dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/padding_parent_small"
+                    android:layout_marginEnd="34dp"
+                    android:layout_toStartOf="@id/cart"
+                    android:layout_toEndOf="@id/photo"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/skill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rocketleague"
+                        android:textColor="@color/textSecondary" />
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Elmehdi Hmaidout"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/cart"
+                    android:layout_width="@dimen/photo_size_extra_small"
+                    android:layout_height="@dimen/photo_size_extra_small"
+                    android:layout_marginEnd="@dimen/padding_parent_small"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:paddingTop="@dimen/margin_20dp"
+                    android:src="@drawable/ic_cart" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_search"
+                style="@style/input_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_40dp"
+                android:hint="Apex legend"
+                app:endIconDrawable="@drawable/search"
+                app:endIconMode="custom"
+                app:endIconTint="@null">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:focusable="auto" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/popular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/top_info"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/popular_row_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:padding="@dimen/margin_20dp"
+                android:text="Popular games"
+                android:textColor="@color/white"
+                android:textSize="@dimen/margin_20dp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popularBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top_info"
+                tools:listitem="@layout/home_header"
+                android:clipToPadding="false"
+                tools:itemCount="2"
+                app:reverseLayout="true"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/free_week"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/popular"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/free_row_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:padding="@dimen/margin_20dp"
+                android:text="Free orientation week"
+                android:textColor="@color/white"
+                android:textSize="@dimen/margin_20dp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/freeBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top_info"
+                tools:listitem="@layout/home_header"
+                android:clipToPadding="false"
+                tools:itemCount="2"
+                app:reverseLayout="true"/>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>
+</layout>

@@ -5,11 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView.ItemView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.banibegood.hogentproject.R
-import com.banibegood.hogentproject.model.Game
+import com.banibegood.hogentproject.database.game.Game
 
 class HomeHeaderAdapter(private val list: MutableList<Game>) : RecyclerView.Adapter<HomeHeaderAdapter.ViewHolder>(){
 
@@ -34,9 +32,8 @@ class HomeHeaderAdapter(private val list: MutableList<Game>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemTitle.text = list[position].name
-        holder.itemDetail.text = list[position].desc
-        holder.itemImage.setImageResource(list[position].image)
+        holder.itemTitle.text = list[position].title
+        holder.itemDetail.text = list[position].shortDescription
     }
 
     override fun getItemCount(): Int {

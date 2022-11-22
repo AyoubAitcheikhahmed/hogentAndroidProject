@@ -1,19 +1,33 @@
 package com.banibegood.hogentproject.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil.setContentView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
 import com.banibegood.hogentproject.*
-import com.banibegood.hogentproject.adapter.HomeHeaderAdapter
+import com.banibegood.hogentproject.database.game.Game
 import com.banibegood.hogentproject.databinding.ActivityMainBinding
-import com.banibegood.hogentproject.model.Game
+import com.banibegood.hogentproject.fragments.fragment_cart
+import com.banibegood.hogentproject.fragments.fragment_friends
+import com.banibegood.hogentproject.fragments.fragment_home
+import com.banibegood.hogentproject.network.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import retrofit2.*
+import retrofit2.converter.gson.GsonConverterFactory
+import timber.log.Timber
 
 
+//TODO {
+// change this to MVVm
+// }
 class MainActivity : AppCompatActivity() {
+
+
 
     private lateinit var binding: ActivityMainBinding
 
@@ -25,6 +39,14 @@ class MainActivity : AppCompatActivity() {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         getSupportActionBar()?.hide()
 
+        val apiService = GameApiService(ConnectivityInterceptorImpl(this.applicationContext!!))
+        val gameNetworkDatasource = GameNetworkDatasourceImpl(apiService)
+        gameNetworkDatasource.downloadedGames.observe(this, Observer{
+            print(it.toString())
+        })
+        GlobalScope.launch (Dispatchers.Main){
+            gameNetworkDatasource.fetchGames()
+        }
         binding = ActivityMainBinding.inflate(layoutInflater)
 
 
@@ -33,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val pager = PageAdapter(supportFragmentManager)
-        pager.adds(fragment_home(),fragment_cart(),fragment_friends())
+        pager.adds(fragment_home(), fragment_cart(), fragment_friends())
 
         binding.viewPager.adapter = pager
         //off screen limit ?
@@ -68,6 +90,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 
 
 

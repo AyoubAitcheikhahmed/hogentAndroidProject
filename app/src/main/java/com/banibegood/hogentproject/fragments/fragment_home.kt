@@ -1,6 +1,8 @@
 package com.banibegood.hogentproject.fragments
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -55,14 +57,15 @@ class fragment_home : Fragment() {
 //        home_free_recycler.layoutManager = layoutManagerFree
 //        home_free_recycler.setHasFixedSize(true)
 //        home_free_recycler.adapter = HomeHeaderAdapter(games)
-
+        Log.i(TAG, "Hello World1")
         val apiService = GameApiService(ConnectivityInterceptorImpl(this.requireContext()))
         val gameNetworkDatasource = GameNetworkDatasourceImpl(apiService)
         gameNetworkDatasource.downloadedGames.observe(viewLifecycleOwner, Observer{
             print(it.toString())
         })
         GlobalScope.launch (Dispatchers.Main){
-            Timber.d("FETCHING GAMES_________________________________")
+            Log.i(TAG, "FETCHING GAMES_________________________________GOLBALSCOP")
+//            Timber.tag(TAG).i("FETCHING GAMES_________________________________GOLBALSCOP")
             gameNetworkDatasource.fetchGames()
         }
 

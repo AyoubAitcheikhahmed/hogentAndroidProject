@@ -13,7 +13,7 @@ data class Game(
     val gameUrl: String,
     val genre: String,
     @PrimaryKey
-    val id: Int,
+    val id: Long,
     val platform: String,
     val publisher: String,
     @SerializedName("release_date")

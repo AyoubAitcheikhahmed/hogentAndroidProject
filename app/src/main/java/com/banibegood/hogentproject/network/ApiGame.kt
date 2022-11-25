@@ -13,6 +13,7 @@ import com.squareup.moshi.Json
 
 
 class ApiGame(
+    val id : Long,
     val developer: String,
     @Json(name ="freetogame_profile_url")
     val freetogameProfileUrl: String,
@@ -27,4 +28,32 @@ class ApiGame(
     val shortDescription: String,
     val thumbnail: String,
     val title: String
-)
+){
+    public fun transform() : Game{
+        val developer = this.developer
+        val freetogameProfileUrl= this.freetogameProfileUrl
+        val gameUrl = this.gameUrl
+        val genre = this.genre
+        val platform = this.platform
+        val publisher = this.publisher
+        val releaseDate = this.releaseDate
+        val shortDescription = this.shortDescription
+        val thumbnail = this.thumbnail
+        val title = this.title
+        val id = this.id
+        return Game(
+            developer,
+            freetogameProfileUrl,
+            gameUrl,
+            genre,
+            id,
+            platform,
+            publisher,
+            releaseDate,
+            shortDescription,
+            thumbnail,
+            title
+        )
+    }
+
+}

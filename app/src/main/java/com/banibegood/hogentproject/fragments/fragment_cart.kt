@@ -12,6 +12,11 @@ import com.banibegood.hogentproject.databinding.FragmentCartBinding
 class fragment_cart : Fragment() {
 
     private lateinit var binding: FragmentCartBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

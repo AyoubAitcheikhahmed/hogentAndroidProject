@@ -44,7 +44,6 @@ interface GameApiService {
             val httpClient = OkHttpClient.Builder()
                 .addInterceptor(logger)
                 .addInterceptor(reqInterceptor)
-                .addInterceptor(connectivityInterceptor)
                 .build()
 
             return Retrofit.Builder()

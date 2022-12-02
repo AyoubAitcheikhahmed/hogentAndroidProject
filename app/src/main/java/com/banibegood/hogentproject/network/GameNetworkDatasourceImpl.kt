@@ -8,7 +8,7 @@ import com.banibegood.hogentproject.helper.exception.NetworkOfflineException
 import timber.log.Timber
 
 class GameNetworkDatasourceImpl(
-    private val gameApiService: GameApiService,
+    private val gameApiService: GameApiService
 ) : GameNetworkDatasource {
 
 
@@ -18,15 +18,8 @@ class GameNetworkDatasourceImpl(
 
     override suspend fun fetchGames() {
         try {
-            Timber.d("FETCHING GAMES")
             val fetchedData = gameApiService.getData().await()
-            Log.i(ContentValues.TAG, "DATA FETCHED_________________________________")
-            for(gameItem in fetchedData){
-                Log.i(ContentValues.TAG, gameItem.title)
-            }
-
-            print(fetchedData.size)
-//            _downloadedGames.postValue(fetchedData)
+            _downloadedGames.postValue(fetchedData)
         }
         catch (e: NetworkOfflineException) {
             Timber.tag("NETWORK").e("Internet is offline")

@@ -40,25 +40,30 @@ class UlteamRepositoryImpl(
         return transformed
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private suspend fun cachDataFromNetwork() {
-        if (fetchDataTimeCheck(ZonedDateTime.now().minusHours(6))){
+        if (fetchDataTimeCheck()){
             gameDatasource.fetchGames()
         }
-
     }
 
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun fetchDataTimeCheck(lastFetchTime: ZonedDateTime): Boolean {
-        return lastFetchTime.isAfter(ZonedDateTime.now().minusHours(3))
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun getRepositoryGames(): LiveData<List<Game>> {
        return withContext(Dispatchers.IO){
            cachDataFromNetwork()
            return@withContext gamesDao.getAllGames()
        }
     }
+
+    override suspend fun getRepositoryGamesSuspend(): List<Game> {
+        return withContext(Dispatchers.IO){
+            cachDataFromNetwork()
+            return@withContext gamesDao.getAllGamesSuspend()
+        }
+    }
+
+    private fun fetchDataTimeCheck(): Boolean {
+        return true
+        TODO("Find a way to check if there is a need to fetch data")
+    }
+
 }

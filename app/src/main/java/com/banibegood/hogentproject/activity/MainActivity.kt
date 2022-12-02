@@ -1,25 +1,19 @@
 package com.banibegood.hogentproject.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
 import com.banibegood.hogentproject.*
-import com.banibegood.hogentproject.database.game.Game
 import com.banibegood.hogentproject.databinding.ActivityMainBinding
 import com.banibegood.hogentproject.fragments.fragment_cart
 import com.banibegood.hogentproject.fragments.fragment_friends
-import com.banibegood.hogentproject.fragments.fragment_home
+import com.banibegood.hogentproject.fragments.home.HomeFragment
 import com.banibegood.hogentproject.network.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import okhttp3.OkHttpClient
-import retrofit2.*
-import retrofit2.converter.gson.GsonConverterFactory
-import timber.log.Timber
 
 
 //TODO {
@@ -55,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val pager = PageAdapter(supportFragmentManager)
-        pager.adds(fragment_home(), fragment_cart(), fragment_friends())
+        pager.adds(HomeFragment(), fragment_cart(), fragment_friends())
 
         binding.viewPager.adapter = pager
         //off screen limit ?

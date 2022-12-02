@@ -1,13 +1,7 @@
 package com.banibegood.hogentproject.database.game
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
-import com.banibegood.hogentproject.database.friend.Friend
+import androidx.room.*
 
 @Dao
 interface GamesDao {
@@ -22,7 +16,12 @@ interface GamesDao {
     suspend fun getGame(key: Long): Game
 
     @Query("SELECT * FROM game ORDER BY id")
-    suspend fun getAllGames(): LiveData<List<Game>>
+    fun getAllGames(): LiveData<List<Game>>
+
+    @Query("SELECT * FROM game ORDER BY id")
+    suspend fun getAllGamesSuspend(): List<Game>
+
+
 
 
 }
